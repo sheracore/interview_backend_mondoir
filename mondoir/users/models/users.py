@@ -50,7 +50,9 @@ class UserManager(BaseUserManager):
         # Example: Checking if the password has at least 8 characters, contains both letters and numbers
         if len(password) < 8 or not any(char.isalpha() for char in password) or not any(
                 char.isdigit() for char in password):
-            raise ValidationError("Password must be at least 8 characters long and contain both letters and numbers")
+            raise ValidationError(
+                {"password": ["Password must be at least 8 characters long and contain both letters and numbers"]}
+            )
 
 
 # PermissionsMixin

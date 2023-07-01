@@ -8,17 +8,14 @@ from mondoir.utilities.admin import UserDataModelAdmin
 class CVAdmin(UserDataModelAdmin):
     fields = [
         'title',
-        'url'
     ]
     list_display = [
         'title',
-        'url'
     ]
     list_filter = [
     ]
     search_fields = [
         'title',
-        'url'
     ]
     exclude = []
     raw_id_fields = []
