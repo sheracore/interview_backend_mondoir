@@ -49,7 +49,7 @@ sudo docker-compose up --build -d
 python manage.py createsuperuser
 ```
 
-## Run
+# Run
 ```commandline
 python manage.py runserver 0.0.0.0:8000
 celery -A DJANGO_PROJECT worker -l info
