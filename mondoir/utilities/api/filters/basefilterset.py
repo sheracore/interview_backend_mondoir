@@ -31,9 +31,9 @@ class DataModelFilterSet(filters.FilterSet):
 
 
 class UserDataModelFilterSet(DataModelFilterSet):
-    user_emails = MultipleValueFilter(
-        field_name='user__email',
-        help_text={'description': 'Contain emails', "example": "['m.ghaffari662@gmail.com', 'rsabzeh@gmail.com']"},
+    user_usernames = MultipleValueFilter(
+        field_name='user__username',
+        help_text={'description': 'Contain usernames', "example": "['sdfter2345', 'sheracore']"},
     )
     user_pks = MultipleValueFilter(
         field_name='user__pk',
@@ -48,10 +48,10 @@ class UserDataModelFilterSet(DataModelFilterSet):
     user_is_staff = django_filters.BooleanFilter(
         field_name='user__is_staff', help_text={'description': 'Is user staff?', "example": 'False'}
     )
-    user_email = django_filters.CharFilter(
-        field_name='user__email',
+    user_username = django_filters.CharFilter(
+        field_name='user__username',
         lookup_expr='icontains',
-        help_text={'description': 'Email', "example": 'm.ghaffari662@gmail.com'},
+        help_text={'description': 'Username', "example": 'sheracore'},
     )
     user_created_at = django_filters.DateTimeFromToRangeFilter(
         field_name='user__created_at',

@@ -28,7 +28,7 @@ class UserInformationViewSet(UserDataModelViewSet):
         'last_name',
         'last_login',
         'is_staff',
-        'email',
+        'username',
         'gender',
         'timezone',
         'language',

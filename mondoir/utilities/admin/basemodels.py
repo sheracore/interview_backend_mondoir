@@ -68,7 +68,7 @@ class UserDataModelAdmin(DataModelAdmin):
         'user',
     ]
     list_filter = []
-    search_fields = ['user__email', 'user__pk']
+    search_fields = ['user__username', 'user__pk']
     exclude = []
     raw_id_fields = [
         'user',

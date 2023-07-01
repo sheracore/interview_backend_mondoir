@@ -15,13 +15,13 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'password', 'token')
+        fields = ('username', 'password', 'token')
         extra_kwargs = {'password': {'write_only': True, 'min_length': 5}}
 
     def create(self, validated_data):
         """Create a new user with encrypted password and return it"""
         user = User.objects.create_user(
-            email=validated_data['email'],
+            username=validated_data['username'],
             password=validated_data['password'],
         )
 
@@ -30,6 +30,6 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         update_last_login(None, user)
 
         return {
-            'email': user.email,
+            'username': user.username,
             'token': jwt_token
         }

@@ -7,15 +7,13 @@ from mondoir.utilities.admin import DataModelAdmin
 
 class UserAdmin(DataModelAdmin):
     fields = [
-        'email',
+        'username',
         'password',
-        'uuid',
         'is_staff',
         'is_superuser',
         'last_login',
     ]
     list_display = [
-        'email',
         'is_staff',
         'is_superuser',
         'last_login',
@@ -26,13 +24,10 @@ class UserAdmin(DataModelAdmin):
         'last_login',
     ]
     search_fields = [
-        'email',
-        'uuid',
     ]
     exclude = []
     raw_id_fields = []
     readonly_fields = [
-        'uuid',
     ]
     allowed_actions = []
     inlines = []

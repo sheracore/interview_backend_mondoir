@@ -36,10 +36,10 @@ class UserInformationFilterSet(UserDataModelFilterSet):
         field_name='is_debug_mode',
         help_text={'description': 'Is debug mode'},
     )
-    username = filters.CharFilter(
-        field_name='username',
+    email = filters.CharFilter(
+        field_name='email',
         lookup_expr='icontains',
-        help_text={'description': 'Username', "example": "sheracore"},
+        help_text={'description': 'Email', "example": "sheracore@gmail.com"},
     )
     gender = MultipleValueFilter(
         field_name='gender',
@@ -49,11 +49,3 @@ class UserInformationFilterSet(UserDataModelFilterSet):
         field_name='language',
         help_text={'description': 'language', "example": "POST->['en_US', 'en_GB'] queryparams->en_US,en_GB"},
     )
-    # user_pks = filters.Filter(
-    #     method="filter_user_pks",
-    #     help_text={'description': 'User pks', "example": "[23,5,77]"},
-    # )
-    #
-    # def filter_user_pks(self, queryset, name, value):
-    #     queryset = queryset.filter(user_id__in=value)
-    #     return queryset

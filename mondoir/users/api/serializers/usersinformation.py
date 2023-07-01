@@ -13,7 +13,7 @@ class UserInformationSummarySerializer(DataModelSummarySerializer):
     class Meta:
         model = UserInformation
         fields = DataModelSummarySerializer.Meta.fields + [
-            'username',
+            'email',
             'user_id',
             'first_name',
             'last_name',
@@ -25,11 +25,12 @@ class UserInformationSummarySerializer(DataModelSummarySerializer):
 
 
 class UserInformationAdminSummarySerializer(UserInformationSummarySerializer):
-    email = serializers.SerializerMethodField()
+    username = serializers.SerializerMethodField()
 
     class Meta:
         model = UserInformation
         fields = UserInformationSummarySerializer.Meta.fields + [
+            'username',
             'last_login',
             'gender',
             'is_staff',
@@ -41,11 +42,11 @@ class UserInformationAdminSummarySerializer(UserInformationSummarySerializer):
         read_only_fields = UserInformationSummarySerializer.Meta.read_only_fields + [
             'last_login',
             'is_staff',
-            'email'
+            'username'
         ]
 
-    def get_email(self, obj):
-        return str(obj.user.email)
+    def get_username(self, obj):
+        return str(obj.user.username)
 
 
 class UserInformationDetailSerializer(UserDataModelDetailSerializer, UserInformationAdminSummarySerializer):
