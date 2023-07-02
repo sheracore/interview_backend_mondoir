@@ -2,10 +2,10 @@
 from django.contrib import admin
 
 from mondoir.cvs.models import Certificate
-from mondoir.utilities.admin import DataModelAdmin
+from mondoir.utilities.admin import UserDataModelAdmin
 
 
-class CertificateAdmin(DataModelAdmin):
+class CertificateAdmin(UserDataModelAdmin):
     fields = [
         'cv',
         'name',
@@ -36,7 +36,7 @@ class CertificateAdmin(DataModelAdmin):
 
     def __init__(self, *args, **kwargs):
         Klass = CertificateAdmin
-        Klass_parent = DataModelAdmin
+        Klass_parent = UserDataModelAdmin
 
         super(Klass, self).__init__(*args, **kwargs)
 

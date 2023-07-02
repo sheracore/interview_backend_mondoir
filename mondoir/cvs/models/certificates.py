@@ -3,9 +3,9 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from mondoir.utilities.db.models import (
-    DataModel,
-    DataModelManager,
-    DataModelQuerySet
+    UserDataModel,
+    UserDataModelManager,
+    UserDataModelQuerySet
 )
 
 """
@@ -13,16 +13,16 @@ Certificate Model
 """
 
 
-class CertificateQuerySet(DataModelQuerySet):
+class CertificateQuerySet(UserDataModelQuerySet):
     pass
 
 
-class CertificateManager(DataModelManager):
+class CertificateManager(UserDataModelManager):
     def get_queryset(self):
         return CertificateQuerySet(self.model, using=self._db)
 
 
-class Certificate(DataModel):
+class Certificate(UserDataModel):
     cv = models.ForeignKey('cvs.CV', on_delete=models.CASCADE, related_name='certificate_cv', verbose_name=_('CV'))
     name = models.CharField(max_length=100, verbose_name=_('Name'))
     issuer = models.CharField(max_length=100, verbose_name=_('Issuer'))

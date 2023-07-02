@@ -2,10 +2,10 @@
 from django.contrib import admin
 
 from mondoir.cvs.models import Experience
-from mondoir.utilities.admin import DataModelAdmin
+from mondoir.utilities.admin import UserDataModelAdmin
 
 
-class ExperienceAdmin(DataModelAdmin):
+class ExperienceAdmin(UserDataModelAdmin):
     fields = [
         'cv',
         'company_name',
@@ -44,7 +44,7 @@ class ExperienceAdmin(DataModelAdmin):
 
     def __init__(self, *args, **kwargs):
         Klass = ExperienceAdmin
-        Klass_parent = DataModelAdmin
+        Klass_parent = UserDataModelAdmin
 
         super(Klass, self).__init__(*args, **kwargs)
 

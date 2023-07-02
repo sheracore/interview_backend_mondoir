@@ -3,9 +3,9 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from mondoir.utilities.db.models import (
-    DataModel,
-    DataModelManager,
-    DataModelQuerySet
+    UserDataModel,
+    UserDataModelManager,
+    UserDataModelQuerySet
 )
 from ..utilities import validate_bio_content
 
@@ -24,16 +24,16 @@ class BioType(models.IntegerChoices):
     WEBSITE = 6, _('Website')
 
 
-class BioQuerySet(DataModelQuerySet):
+class BioQuerySet(UserDataModelQuerySet):
     pass
 
 
-class BioManager(DataModelManager):
+class BioManager(UserDataModelManager):
     def get_queryset(self):
         return BioQuerySet(self.model, using=self._db)
 
 
-class Bio(DataModel):
+class Bio(UserDataModel):
     cv = models.ForeignKey('cvs.CV', on_delete=models.CASCADE, related_name='bio_cv', verbose_name=_('CV'))
     type = models.IntegerField(
         choices=BioType.choices,

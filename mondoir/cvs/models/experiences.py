@@ -3,9 +3,9 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from mondoir.utilities.db.models import (
-    DataModel,
-    DataModelManager,
-    DataModelQuerySet
+    UserDataModel,
+    UserDataModelManager,
+    UserDataModelQuerySet
 )
 # from rest_framework.exceptions import ValidationError
 from django.core.validators import ValidationError
@@ -31,16 +31,16 @@ class PositionType(models.IntegerChoices):
     SALES_ENGINEER = 12, _('Sales Engineer')
 
 
-class ExperienceQuerySet(DataModelQuerySet):
+class ExperienceQuerySet(UserDataModelQuerySet):
     pass
 
 
-class ExperienceManager(DataModelManager):
+class ExperienceManager(UserDataModelManager):
     def get_queryset(self):
         return ExperienceQuerySet(self.model, using=self._db)
 
 
-class Experience(DataModel):
+class Experience(UserDataModel):
     cv = models.ForeignKey('cvs.CV', on_delete=models.CASCADE, related_name='experience_cv', verbose_name=_('CV'))
     company_name = models.CharField(max_length=50, verbose_name=_('Company Name'))
     position = models.IntegerField(

@@ -3,9 +3,9 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from mondoir.utilities.db.models import (
-    DataModel,
-    DataModelManager,
-    DataModelQuerySet
+    UserDataModel,
+    UserDataModelManager,
+    UserDataModelQuerySet
 )
 
 """
@@ -23,16 +23,16 @@ class DegreeLevel(models.IntegerChoices):
     OTHER = 7, _('Other')
 
 
-class EducationQuerySet(DataModelQuerySet):
+class EducationQuerySet(UserDataModelQuerySet):
     pass
 
 
-class EducationManager(DataModelManager):
+class EducationManager(UserDataModelManager):
     def get_queryset(self):
         return EducationQuerySet(self.model, using=self._db)
 
 
-class Education(DataModel):
+class Education(UserDataModel):
     cv = models.ForeignKey('cvs.CV', on_delete=models.CASCADE, related_name='education_cv', verbose_name=_('CV'))
     institution_name = models.CharField(max_length=50, verbose_name=_('Institution Name'))
     degree = models.IntegerField(

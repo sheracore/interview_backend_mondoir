@@ -2,10 +2,10 @@
 from django.contrib import admin
 
 from mondoir.cvs.models import Education
-from mondoir.utilities.admin import DataModelAdmin
+from mondoir.utilities.admin import UserDataModelAdmin
 
 
-class EducationAdmin(DataModelAdmin):
+class EducationAdmin(UserDataModelAdmin):
     fields = [
         'cv',
         'institution_name',
@@ -37,7 +37,7 @@ class EducationAdmin(DataModelAdmin):
 
     def __init__(self, *args, **kwargs):
         Klass = EducationAdmin
-        Klass_parent = DataModelAdmin
+        Klass_parent = UserDataModelAdmin
 
         super(Klass, self).__init__(*args, **kwargs)
 
