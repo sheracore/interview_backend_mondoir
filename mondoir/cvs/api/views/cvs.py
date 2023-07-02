@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 
 from mondoir.cvs.models import CV
-from mondoir.utilities.permissions import AllowStaff, IsSuperUserAccessPermission, AllowOwner
+from mondoir.utilities.permissions import IsSuperUserAccessPermission, AllowOwner
 from mondoir.utilities.api.views import UserDataModelViewSet
 from mondoir.utilities.api.paginations import StandardResultsSetPagination
 
@@ -51,7 +51,7 @@ class CVViewSet(UserDataModelViewSet):
             AllowOwner,
         ],
         'destroy': [
-            IsSuperUserAccessPermission,
+            AllowOwner,
         ],
     }
 
