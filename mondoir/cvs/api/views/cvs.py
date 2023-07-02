@@ -1,5 +1,5 @@
 from mondoir.cvs.models import CV
-from mondoir.utilities.permissions import IsSuperUserAccessPermission, AllowOwner
+from mondoir.utilities.permissions import IsSuperUserAccessPermission, AllowStaffOrOwner
 from mondoir.utilities.api.views import UserDataModelViewSet
 from mondoir.utilities.api.paginations import StandardResultsSetPagination
 
@@ -32,19 +32,19 @@ class CVViewSet(UserDataModelViewSet):
             IsSuperUserAccessPermission,
         ],
         'list': [
-            AllowOwner,
+            AllowStaffOrOwner,
         ],
         'retrieve': [
-            AllowOwner,
+            AllowStaffOrOwner,
         ],
         'update': [
-            AllowOwner,
+            AllowStaffOrOwner,
         ],
         'create': [
-            AllowOwner,
+            AllowStaffOrOwner,
         ],
         'destroy': [
-            AllowOwner,
+            AllowStaffOrOwner,
         ],
     }
 
