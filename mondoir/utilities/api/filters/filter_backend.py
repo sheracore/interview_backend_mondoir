@@ -8,7 +8,7 @@ class FilterBackend(DjangoFilterBackend):
     def get_filterset_kwargs(self, request, queryset, view):
         kwargs = super().get_filterset_kwargs(request, queryset, view)
 
-        if hasattr(view, 'get_filterset_kwargs'):  # TODO: Maby it doen't need anymore for mondoir
+        if hasattr(view, 'get_filterset_kwargs'):  # TODO: Maby it dosen't need anymore for mondoir
             kwargs.update(view.get_filterset_kwargs())
         return kwargs
 
