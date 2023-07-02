@@ -44,5 +44,5 @@ class CV(UserDataModel):
         my_cvs = CV.objects.filter(user=self.user).count()
         if my_cvs >= 5:
             raise ValidationError(
-                {"cv": ["You can only create 5 cvs for your current purchase state"]}
+                {"title": ["You can only create 5 cvs for your current purchase state"]}
             )
