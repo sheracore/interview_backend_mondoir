@@ -1,31 +1,31 @@
-from mondoir.cvs.models import CV
+from mondoir.cvs.models import Skill
 from mondoir.utilities.permissions import IsSuperUserAccessPermission, AllowOwner
 from mondoir.utilities.api.views import UserDataModelViewSet
 from mondoir.utilities.api.paginations import StandardResultsSetPagination
 
 # ViewSets define the view behavior.
 from ..serializers import (
-    CVDetailSerializer,
-    CVSummarySerializer,
+    SkillDetailSerializer,
+    SkillSummarySerializer,
 )
-from ..filters import CVFilterSet
+from ..filters import SkillFilterSet
 
 
-class CVViewSet(UserDataModelViewSet):
-    queryset = CV.objects.none()
-    filterset_class = CVFilterSet
-    model = CV
+class SkillViewSet(UserDataModelViewSet):
+    queryset = Skill.objects.none()
+    filterset_class = SkillFilterSet
+    model = Skill
     pagination_class = StandardResultsSetPagination
     OrderingFilter = (
        'title',
+       'proficiency'
     )
 
     serializers = {
-        'default': CVSummarySerializer,
-        'retrieve': CVDetailSerializer,
-        'create': CVDetailSerializer,
-        'update': CVDetailSerializer,
-        'admin': CVSummarySerializer,
+        'default': SkillSummarySerializer,
+        'retrieve': SkillDetailSerializer,
+        'create': SkillDetailSerializer,
+        'update': SkillDetailSerializer,
     }
     permission_classes_by_action = {
         'default': [
@@ -50,7 +50,7 @@ class CVViewSet(UserDataModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        queryset = super(CVViewSet, self).get_queryset()
+        queryset = super(SkillViewSet, self).get_queryset()
         if user.is_authenticated and self.action.find('admin') == -1:
             queryset = queryset.filter(user=user)
         return queryset

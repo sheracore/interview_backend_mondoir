@@ -10,16 +10,16 @@ class CertificateAdmin(UserDataModelAdmin):
         'cv',
         'name',
         'issuer',
-        'issuer_year'
+        'issuer_date'
     ]
     list_display = [
         'cv',
         'name',
         'issuer',
-        'issuer_year'
+        'issuer_date'
     ]
     list_filter = [
-        'issuer_year',
+        'issuer_date',
     ]
     search_fields = [
         'name',

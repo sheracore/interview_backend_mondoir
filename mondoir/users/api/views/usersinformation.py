@@ -44,7 +44,6 @@ class UserInformationViewSet(UserDataModelViewSet):
         'me': UserInformationDetailSerializer,
         'change_staff': UserInformationDetailSerializer,
         'admin': UserInformationAdminSummarySerializer,
-        'filter_admin': UserInformationAdminSummarySerializer,
     }
     permission_classes_by_action = {
         'default': [

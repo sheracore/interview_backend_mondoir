@@ -14,12 +14,12 @@ Education Model
 
 
 class DegreeLevel(models.IntegerChoices):
-    MASTER = 1, _('Master')
-    BACHELOR = 2, _('Bachelor')
-    DOCTORATE = 3, _('Doctorate')
-    ASSOCIATE = 4, _('Associate')
-    DIPLOMA = 5, _('Diploma')
-    CERTIFICATE = 6, _('Certificate')
+    ASSOCIATE = 1, _('Associate')
+    CERTIFICATE = 2, _('Certificate')
+    DIPLOMA = 3, _('Diploma')
+    BACHELOR = 4, _('Bachelor')
+    MASTER = 5, _('Master')
+    DOCTORATE = 6, _('Doctorate')
     OTHER = 7, _('Other')
 
 
@@ -40,7 +40,7 @@ class Education(UserDataModel):
         default=DegreeLevel.BACHELOR,
         verbose_name=_('Degree'),
     )
-    graduated_year = models.DateField(null=True, blank=True, verbose_name=_('Graduated Year'))
+    graduated_date = models.DateField(null=True, blank=True, verbose_name=_('Graduated date'))
 
     objects = EducationManager()
 

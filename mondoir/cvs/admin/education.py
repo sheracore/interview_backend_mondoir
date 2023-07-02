@@ -10,17 +10,17 @@ class EducationAdmin(UserDataModelAdmin):
         'cv',
         'institution_name',
         'degree',
-        'graduated_year'
+        'graduated_date'
     ]
     list_display = [
         'cv',
         'institution_name',
         'degree',
-        'graduated_year'
+        'graduated_date'
     ]
     list_filter = [
         'degree',
-        'graduated_year'
+        'graduated_date'
     ]
     search_fields = [
         'institution_name',

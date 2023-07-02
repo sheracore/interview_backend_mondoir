@@ -7,8 +7,8 @@ from mondoir.utilities.db.models import (
     UserDataModelManager,
     UserDataModelQuerySet
 )
-# from rest_framework.exceptions import ValidationError
-from django.core.validators import ValidationError
+from rest_framework.exceptions import ValidationError
+# from django.core.validators import ValidationError
 
 
 """

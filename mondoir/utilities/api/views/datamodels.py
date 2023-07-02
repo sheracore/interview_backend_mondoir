@@ -63,9 +63,6 @@ class DataModelViewSet(ModelViewSet):
             'filter': [
                 AllowAny,
             ],
-            'filter_admin': [
-                AllowStaff,
-            ],
             'admin': [
                 AllowStaff,
             ],

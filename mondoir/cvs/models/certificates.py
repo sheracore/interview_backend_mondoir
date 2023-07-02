@@ -26,7 +26,7 @@ class Certificate(UserDataModel):
     cv = models.ForeignKey('cvs.CV', on_delete=models.CASCADE, related_name='certificate_cv', verbose_name=_('CV'))
     name = models.CharField(max_length=100, verbose_name=_('Name'))
     issuer = models.CharField(max_length=100, verbose_name=_('Issuer'))
-    issuer_year = models.DateField(null=True, blank=True, verbose_name=_('Issuer Year'))
+    issuer_date = models.DateField(null=True, blank=True, verbose_name=_('Issuer Date'))
 
     objects = CertificateManager()
 
