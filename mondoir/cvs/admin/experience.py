@@ -1,27 +1,37 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from mondoir.cvs.models import Bio
+from mondoir.cvs.models import Experience
 from mondoir.utilities.admin import DataModelAdmin
 
 
-class BioAdmin(DataModelAdmin):
+class ExperienceAdmin(DataModelAdmin):
     fields = [
         'cv',
-        'type',
-        'content'
+        'company_name',
+        'position',
+        'start_date',
+        'end_date',
+        'description',
+        'is_working_on_current_company'
     ]
     list_display = [
         'cv',
-        'type',
-        'content'
+        'company_name',
+        'position',
+        'start_date',
+        'end_date',
+        'is_working_on_current_company'
     ]
     list_filter = [
-        'type'
+        'position',
+        'is_working_on_current_company',
+        'start_date',
+        'end_date',
     ]
     search_fields = [
-        'type',
-        'content',
+        'company_name',
+        'position',
     ]
     exclude = []
     raw_id_fields = [
@@ -33,7 +43,7 @@ class BioAdmin(DataModelAdmin):
     save_as = True
 
     def __init__(self, *args, **kwargs):
-        Klass = BioAdmin
+        Klass = ExperienceAdmin
         Klass_parent = DataModelAdmin
 
         super(Klass, self).__init__(*args, **kwargs)
@@ -49,4 +59,4 @@ class BioAdmin(DataModelAdmin):
         self.inlines = Klass_parent.inlines + self.inlines
 
 
-admin.site.register(Bio, BioAdmin)
+admin.site.register(Experience, ExperienceAdmin)

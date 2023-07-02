@@ -3,9 +3,9 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from mondoir.utilities.db.models import (
-    UserDataModel,
-    UserDataModelManager,
-    UserDataModelQuerySet
+    DataModel,
+    DataModelManager,
+    DataModelQuerySet
 )
 
 
@@ -21,16 +21,16 @@ class ProficiencyType(models.IntegerChoices):
     ADVANCED = 4, _('Advanced')
 
 
-class SkillQuerySet(UserDataModelQuerySet):
+class SkillQuerySet(DataModelQuerySet):
     pass
 
 
-class SkillManager(UserDataModelManager):
+class SkillManager(DataModelManager):
     def get_queryset(self):
         return SkillQuerySet(self.model, using=self._db)
 
 
-class Skill(UserDataModel):
+class Skill(DataModel):
     cv = models.ForeignKey('cvs.CV', on_delete=models.CASCADE, related_name='skill_cv', verbose_name=_('CV'))
     title = models.CharField(max_length=50, verbose_name=_('Content'))
     proficiency = models.IntegerField(
