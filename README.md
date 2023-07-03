@@ -1,6 +1,6 @@
-# This project prepared for SKYLOOV Interview
+# This project prepared for MONDOIR Interview
 
-# Installation Without Docker
+# Installation
 ## Database
 ### Install mysql
 #### Ubuntu 22.04
@@ -23,11 +23,6 @@ FLUSH PRIVILEGES; #
 sudo apt install libmysqlclient-dev default-libmysqlclient-dev
 ```
 
-#### Install ffmpeg
-```commandline
-sudo apt install ffmpeg
-```
-
 #### install packages
 ```commandline
 pip install -r requiremets.txt
@@ -38,19 +33,17 @@ pip install -r requiremets.txt
 python manage.py migrate
 ```
 
-# Installation With Docker
-
-## Build docker
-```
-sudo docker-compose up --build -d
-```
 ### Create superuser to connecting with django admin panel and swagger
 ```commandline
 python manage.py createsuperuser
 ```
 
+### You can run project tests
+```commandline
+python manage.py test
+```
+
 # Run
 ```commandline
 python manage.py runserver 0.0.0.0:8000
-celery -A DJANGO_PROJECT worker -l info
 ```
