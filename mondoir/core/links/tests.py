@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.urls import reverse
+from django.contrib.contenttypes.models import ContentType
 
 from rest_framework.test import APIClient, APITestCase
 from rest_framework_jwt.settings import api_settings
@@ -30,6 +31,7 @@ class LinkTest(APITestCase):
             password='testpasswor234dstaff',
             is_staff=True
         )
+        self.ct = ContentType.objects.get(app_label='cvs', model='bio')
 
     def authenticate_client(self):
         self.client = APIClient()
@@ -53,6 +55,8 @@ class LinkTest(APITestCase):
             description="description",
             url="http://www.google.com",
             title='test',
+            content_type=self.ct,
+            object_id=1,
         )
         self.authenticate_client()
         res = self.client.get(LINK_URL)
@@ -69,12 +73,16 @@ class LinkTest(APITestCase):
             description="description",
             url="http://www.google.com",
             title='custom',
+            content_type=self.ct,
+            object_id=1,
         )
         Link.objects.create(
             user=self.user,
             description="description",
             url="http://www.google.com",
             title='up',
+            content_type=self.ct,
+            object_id=1,
         )
         self.authenticate_client()
         res_1 = self.client.get(LINK_URL, {'title': 'u'})
@@ -91,12 +99,17 @@ class LinkTest(APITestCase):
             "description": "description",
             "url": "http://www.google.com",
             "title": 'backend',
+            "content_type": self.ct.pk,
+            "object_id": 1,
         }
         payload2 = {
             "user": self.user.pk,
             "description": "description",
             "url": "http://www.google.com",
             "title": 'frontend',
+            "content_type": self.ct.pk,
+            "object_id": 1,
+
         }
         self.authenticate_client()
         res_1 = self.client.post(LINK_URL, payload1)
@@ -106,18 +119,3 @@ class LinkTest(APITestCase):
 
         links = Link.objects.all()
         self.assertEqual(len(links), 2)
-
-    # def test_update_skill(self):
-    #     """Test update skill"""
-    #     changed_title = 'frontend'
-    #     obj = Skill.objects.create(
-    #         user=self.user,
-    #         title='test1',
-    #     )
-    #     self.authenticate_client()
-    #     res = self.client.patch(LINK_URL, {"title": changed_title}, kwargs={'pk': obj.pk})
-    #     self.assertEqual(res.status_code, status.HTTP_200_OK)
-    #
-    #     skills = Skill.objects.all().order_by('-title')
-    #     serializer = SkillSummarySerializer(skills, many=True)
-    #     self.assertEqual(len(skills), 2)

@@ -32,6 +32,18 @@ class Link(UserDataModel):
     url = models.URLField(
         verbose_name=_('URL'),
     )
+    content_type = models.ForeignKey(
+        'contenttypes.ContentType',
+        on_delete=models.CASCADE,
+        db_index=True,
+        related_name='link',
+        verbose_name=_('Content Type'),
+    )
+    object_id = models.CharField(
+        max_length=100,
+        db_index=True,
+        verbose_name=_('Object ID'),
+    )
 
     objects = LinkManager()
 

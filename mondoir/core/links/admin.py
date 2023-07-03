@@ -9,12 +9,16 @@ class LinkAdmin(UserDataModelAdmin):
     fields = [
         'title',
         'description',
-        'url'
+        'url',
+        'object_id',
+        'content_type',
     ]
     list_display = [
         'title',
         'description',
-        'url'
+        'url',
+        'object_id',
+        'content_type',
     ]
     list_filter = [
     ]

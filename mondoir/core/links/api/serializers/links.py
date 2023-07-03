@@ -11,10 +11,12 @@ Link
 
 
 class LinkSummarySerializer(UserDataModelSummarySerializer):
-
+    # TODO: create while list for content_type in order to control it
     class Meta:
         model = Link
         fields = UserDataModelSummarySerializer.Meta.fields + [
+            'object_id',
+            'content_type',
             'title',
             'description',
             'url'
