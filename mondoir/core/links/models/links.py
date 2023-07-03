@@ -26,8 +26,6 @@ class LinkManager(UserDataModelManager):
 class Link(UserDataModel):
     title = models.CharField(
         max_length=100,
-        blank=True,
-        default='',
         verbose_name=_('Title'),
     )
     description = models.CharField(max_length=255, blank=True, verbose_name=_('Description'))

@@ -9,7 +9,7 @@ class BioFilterSet(UserDataModelFilterSet):
     content = filters.CharFilter(
         field_name='content',
         lookup_expr='icontains',
-        help_text={'description': 'Title', "example": "backend"},
+        help_text={'description': 'Content', "example": "backend"},
     )
     types = MultipleValueFilter(
         field_name='type',
