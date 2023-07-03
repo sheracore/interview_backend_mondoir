@@ -1,0 +1,1774 @@
+{
+	"info": {
+		"_postman_id": "f7c5ee66-d9e2-48a9-a20a-4433d9d501e3",
+		"name": "mondoir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8195973"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "user register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"sheracore4\",\n    \"password\": \"qwer1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users_register/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users_register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"sheracore\",\n    \"password\": \"qwer1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/token_auth/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"token_auth",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user token refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiZjYyMWNiYzQtMTQ3NC00NDdhLWFlNDUtN2FjNThjMGE0YjVjIiwidXNlcm5hbWUiOiJtLmdoYWZmYXJpMkBnbWFpbC5jb20iLCJleHAiOjE2ODU5NTE3MTQsImVtYWlsIjoibS5naGFmZmFyaTJAZ21haWwuY29tIiwib3JpZ19pYXQiOjE2ODU3Nzg5MTR9.obAeDyWI6PSNFYb2eOqSMh9QNmHdVcB6u-Vz4DX-_2s\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/token_refresh/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"token_refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user token verify",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNTJhOWRjYzAtN2FlYS00ZjVkLWE4YmUtNjk5NDFlZTA1NTkyIiwidXNlcm5hbWUiOiJtLmdoYWZmYXJpMTFAZ21haWwuY29tIiwiZXhwIjoxNjg4Mzg1NTM4LCJlbWFpbCI6Im0uZ2hhZmZhcmkxMUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTY4ODIxMjczOH0.HxqgEO19nroQG3Mt7vY4qRJMKyqZcBBWtDDXiY-7il8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/token_verify/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"token_verify",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userinformation list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users_info/?ordering=-first_name&page_size=100&user_is_active=true&last_login_befor=2022-12-28T15:33:57.7&pks=11,12,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users_info",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "-first_name"
+								},
+								{
+									"key": "page_size",
+									"value": "100"
+								},
+								{
+									"key": "user_is_active",
+									"value": "true"
+								},
+								{
+									"key": "last_login_befor",
+									"value": "2022-12-28T15:33:57.7"
+								},
+								{
+									"key": "pks",
+									"value": "11,12,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userinformation list admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users_info/admin/?ordering=-first_name&page_size=100&user_is_active=true&last_login_befor=2022-12-28T15:33:57.7&pks=11,12,1,2,3,4,5,6,7,8,9,10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users_info",
+								"admin",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "-first_name"
+								},
+								{
+									"key": "page_size",
+									"value": "100"
+								},
+								{
+									"key": "user_is_active",
+									"value": "true"
+								},
+								{
+									"key": "last_login_befor",
+									"value": "2022-12-28T15:33:57.7"
+								},
+								{
+									"key": "pks",
+									"value": "11,12,1,2,3,4,5,6,7,8,9,10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userinformation retrieve",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users_info/6/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users_info",
+								"6",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userinformation create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"gender\": 1,\n    \"first_name\":\"mamad\",\n    \"last_name\": \"ghafar\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users_info/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users_info",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userinformation delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users_info/10/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users_info",
+								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user information me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users_info/me/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users_info",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user info change staff",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_staff\" : true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users_info/12/change_staff/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users_info",
+								"12",
+								"change_staff",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user info update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"last_name\": \"Mohammad Ghaffor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users_info/12/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users_info",
+								"12",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user information me update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"mohammad1212\",\n    \"last_name\": \"ghaffari1212\",\n    \"gender\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users_info/me/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users_info",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "file",
+			"item": [
+				{
+					"name": "file list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/files/?",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"files",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "file delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/files/15/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"files",
+								"15",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "file retrieve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/files/15/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"files",
+								"15",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "file create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/sheracore/Downloads/v2"
+								},
+								{
+									"key": "title",
+									"value": "sdfsdf",
+									"type": "text"
+								},
+								{
+									"key": "file_link",
+									"value": "https://dl.rozmusic.com/Music/1402/03/16/Arash%20Keyhan%20-%20Bade%20Raftanet.mp3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/files/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"files",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "file update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/sheracore/Downloads/Telegram Desktop/20180620_232707.jpg",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "sdfsdf",
+									"type": "text"
+								},
+								{
+									"key": "file_link",
+									"value": "https://dl.rozmusic.com/Music/1402/03/16/Anoeil%20-%20Man%20Mibinamet.mp3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/files/17/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"files",
+								"17",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cv",
+			"item": [
+				{
+					"name": "cv list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/cvs/?title=developer&pks=4,5,1,2,3,4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cvs",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "developer"
+								},
+								{
+									"key": "pks",
+									"value": "4,5,1,2,3,4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bio list admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/bios/admin/?types=2,3,4&content=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bios",
+								"admin",
+								""
+							],
+							"query": [
+								{
+									"key": "types",
+									"value": "2,3,4"
+								},
+								{
+									"key": "content",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bio list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/bios/?title=developer&pks=4,5,1,2,3,4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bios",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "developer"
+								},
+								{
+									"key": "pks",
+									"value": "4,5,1,2,3,4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "certificate list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/certificates/?title=developer&pks=4,5,1,2,3,4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"certificates",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "developer"
+								},
+								{
+									"key": "pks",
+									"value": "4,5,1,2,3,4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "certificate create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cv\": 1,\n    \"name\": \"Kuber\",\n    \"issuer\": \"Udemy\",\n    \"issuer_date\": \"2023-08-28\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/certificates/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"certificates",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "certificate update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cv\": 1,\n    \"name\": \"Kuberneties\",\n    \"issuer\": \"Udemy\",\n    \"issuer_date\": \"2023-08-28\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/certificates/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"certificates",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "education create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cv\": 1,\n    \"institution_name\": \"toosi3\",\n    \"degree\": 3,\n    \"graduated_date\": \"2022-07-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/educations/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"educations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "experiece create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cv\": 1,\n    \"company_name\": \"misalearn\",\n    \"start_date\": \"2023-01-01\",\n    \"description\":\" sadfsdf asd f\",\n    \"end_date\": \"2023-12-30\",\n    \"is_working_on_current_company\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/experiences/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"experiences",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "skill create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"cv\": 4,\n    \"title\":\"kuber\",\n    \"proficiency\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/skills/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"skills",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "skill list admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"cv\": 1,\n    \"title\":\"kuber\",\n    \"proficiency\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/skills/admin/?proficiencies=1,3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"skills",
+								"admin",
+								""
+							],
+							"query": [
+								{
+									"key": "proficiencies",
+									"value": "1,3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "skill list update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"cv\": 2,\n    \"title\":\"kuber updated\",\n    \"proficiency\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/skills/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"skills",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "experiece list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cv\": 1,\n    \"company_name\": \"misalearn\",\n    \"start_date\": \"2023-01-01\",\n    \"description\":\" sadfsdf asd f\",\n    \"end_date\": \"2023-12-30\",\n    \"is_working_on_current_company\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/experiences/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"experiences",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "experiece update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cv\": 1,\n    \"company_name\": \"misalearn\",\n    \"start_date\": \"2023-01-01\",\n    \"description\":\" sadfsdf asd f\",\n    \"end_date\": \"2023-12-30\",\n    \"is_working_on_current_company\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/experiences/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"experiences",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "experiece list admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cv\": 1,\n    \"company_name\": \"misalearn\",\n    \"start_date\": \"2023-01-01\",\n    \"description\":\" sadfsdf asd f\",\n    \"end_date\": \"2023-12-30\",\n    \"is_working_on_current_company\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/experiences/admin/?company_name=misalearn&start_date_after=2023-01-01",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"experiences",
+								"admin",
+								""
+							],
+							"query": [
+								{
+									"key": "company_name",
+									"value": "misalearn"
+								},
+								{
+									"key": "start_date_after",
+									"value": "2023-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "education list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/educations/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"educations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "education list admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/educations/admin/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"educations",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "education update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cv\": 1,\n    \"institution_name\": \"kut\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/educations/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"educations",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "certificate delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cv\": 1,\n    \"name\": \"Django\",\n    \"issuer\": \"Udemy\",\n    \"issuer_date\": \"2023-07-25\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/certificates/3/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"certificates",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "certificate list admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/certificates/admin/?name=dfgdfg&pks=4,5,1,2,3,4&issuer=dfgdfg&issuer_date_after=2023-07-02&issuer_date_before=2023-07-03",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"certificates",
+								"admin",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "dfgdfg"
+								},
+								{
+									"key": "pks",
+									"value": "4,5,1,2,3,4"
+								},
+								{
+									"key": "issuer",
+									"value": "dfgdfg"
+								},
+								{
+									"key": "issuer_date_after",
+									"value": "2023-07-02"
+								},
+								{
+									"key": "issuer_date_before",
+									"value": "2023-07-03"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bio retrieve",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/bios/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bios",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bio update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"sdfsdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bios/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bios",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bio create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cv\": 2,\n    \"type\": 1,\n    \"content\": \"newwww\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bios/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bio delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cv\": 1,\n    \"type\": 3,\n    \"content\": \"09107829251\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bios/3/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bios",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cv list admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/cvs/admin/?title=developer&pks=4,5,1,2,3,4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cvs",
+								"admin",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "developer"
+								},
+								{
+									"key": "pks",
+									"value": "4,5,1,2,3,4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cv retrieve",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/cvs/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cvs",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cv create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"backend developer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cvs/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cvs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bio create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"backend developer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cvs/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cvs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cv update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"backend developer edited\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cvs/4/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cvs",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cv update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"backend developer edited\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cvs/4/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cvs",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cv delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"backend developer edited\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cvs/3/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cvs",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "link",
+			"item": [
+				{
+					"name": "link list admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/links/admin/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"links",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "link list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/links/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"links",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "link create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"google link\",\n    \"url\": \"http://www.google.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/links/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"links",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "link update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"google link\",\n    \"url\": \"http://www.google.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/links/4/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"links",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "content type list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/content-type/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"content-type",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
