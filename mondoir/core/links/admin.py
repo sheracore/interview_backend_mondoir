@@ -10,15 +10,15 @@ class LinkAdmin(UserDataModelAdmin):
         'title',
         'description',
         'url',
-        'object_id',
         'content_type',
+        'object_id',
     ]
     list_display = [
         'title',
         'description',
         'url',
-        'object_id',
         'content_type',
+        'object_id',
     ]
     list_filter = [
     ]
